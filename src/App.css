@@ -1,0 +1,829 @@
+/**
+ * App Styles
+ * Main layout and component styling
+ * 
+ * LAYOUT STRUCTURE:
+ * - app-container: Full viewport container
+ * - toolbar-region: Contains both banner and primary toolbar (no extra spacing)
+ * - content-region: Main workspace area
+ */
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.toolbar-region {
+  flex-shrink: 0;
+  z-index: 100;
+  /* No extra padding or margin - toolbars handle their own spacing */
+}
+
+
+.content-region {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+  position: relative;
+}
+
+/* ============================================
+   BOTTOM PROMOTIONAL BANNER
+   Compact full-width banner below diagram area
+   ============================================ */
+
+.bottom-banner {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90.4deg, #154db9 0.03%, #081b3f 11.56%, #081b3f 85.56%, #154db9 99.97%);
+  border-top: 1px solid #D8DEE9;
+  padding: 12px;
+  font-family: sans-serif;
+  color: white;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.banner-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+  border-radius: 8px;
+  padding: 6px;
+  box-shadow: 0 2px 6px rgba(1, 11, 34, 0.35) inset;
+}
+
+.banner-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: #ffffff;
+}
+
+.banner-text {
+  flex: 0 1 auto;
+  min-width: 0;
+  margin-right: 8px;
+}
+
+.banner-message {
+  font-weight: 400;
+  font-size: 16px;
+  color: #e1e3e7;
+}
+
+.banner-message .banner-em {
+  font-weight: 700;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.banner-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: 8px;
+  align-items: center;
+}
+
+.banner-btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-btn-primary {
+  background-color: #ffd800;
+  color: #000;
+  box-shadow: 0 8px 18px rgba(13, 33, 0, 0.14);
+  border-radius: 8px;
+  padding: 12px 22px;
+}
+
+.banner-btn-secondary {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.95);
+  border: none;
+  padding: 6px 12px;
+}
+
+.banner-btn-secondary:hover {
+  background: #173D87;
+  /* darker blue overlay */
+}
+
+/* Trial button using pseudo-elements like the Blazor sample */
+.e-trial-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  min-width: 160px;
+  padding: 0 16px;
+  background: #FFF30F;
+  color: #000;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.e-trial-btn::before {
+  content: "Start Free Trial";
+  font-family: sans-serif;
+  color: inherit;
+}
+
+.e-trial-btn::after {
+  content: "\e7f9";
+  font-family: 'e-icons';
+  margin-left: 5px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+/* Responsive banner */
+@media (max-width: 1200px) {
+  .banner-message {
+    font-size: 12px;
+  }
+
+  .banner-btn {
+    font-size: 12px;
+    padding: 5px 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bottom-banner {
+    padding: 10px 12px;
+  }
+
+  .banner-content {
+    justify-content: flex-start;
+    gap: 10px;
+    overflow-x: auto;
+  }
+
+  .banner-message {
+    white-space: normal;
+    font-size: 11px;
+  }
+}
+
+.symbol-palette-region {
+  width: 250px;
+  flex-shrink: 0;
+  border-right: 1px solid #e0e0e0;
+  background-color: #fff;
+  overflow: auto;
+}
+
+.diagram-region {
+  flex: 1;
+  position: relative;
+  background-color: #f8f9fa;
+  overflow: hidden;
+}
+
+.property-panel-region {
+
+  width: 340px;
+  max-width: 360px;
+  overflow-x: visible;
+  /* or auto, but never hidden */
+
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .symbol-palette-region {
+    width: 200px;
+  }
+
+  .property-panel-region {
+    width: 320px;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-region {
+    flex-direction: column;
+  }
+
+  .symbol-palette-region {
+    width: 100%;
+    height: 150px;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .property-panel-region {
+    width: 100%;
+    height: 200px;
+    border-left: none;
+    border-top: 1px solid #e0e0e0;
+  }
+}
+
+.db-property-editor-container {
+  width: 340px;
+  height: 100%;
+  float: left;
+  padding: 10px;
+  overflow: auto;
+  border-left: 1px solid rgb(203, 203, 203);
+  border-top: 1px solid rgb(203, 203, 203);
+}
+
+/* Panel root */
+.pp.container {
+  overflow: auto;
+  padding: 0 12px;
+}
+
+/* Section structure */
+.pp-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  /* tight vertical rhythm across sections */
+}
+
+.pp-header {
+  font-weight: 600;
+  padding: 12px 0 4px;
+}
+
+.pp-subheader {
+  font-size: 13px;
+  color: #444;
+  padding-top: 4px;
+}
+
+/* Grid utilities */
+.pp-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.pp-grid-1 {
+  grid-template-columns: 1fr;
+}
+
+.pp-grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+
+.pp-grid-3 {
+  grid-template-columns: 1fr 1fr 40px;
+}
+
+/* third column for icon or dropdown */
+.pp-grid-2-1 {
+  grid-template-columns: 2fr 1fr;
+}
+
+/* text font rows */
+
+/* Field block */
+.pp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pp-field-icon {
+  align-items: end;
+}
+
+.pp-field .e-control,
+.pp-field .e-input,
+.pp-field .e-numeric,
+.pp-field .e-dropdownlist {
+  width: 100%;
+}
+
+/* Small labels (X, Y, W, H, R) */
+.pp-label {
+  font-size: 12px;
+  color: #666;
+  line-height: 1;
+  padding-bottom: 2px;
+}
+
+/* Icon-only button cell (lock) */
+.pp-icon-only.e-btn {
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Row utilities */
+.pp-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pp-opacity-badge {
+  width: 48px;
+  height: 28px;
+  padding: 2px 6px;
+  font-size: 12px;
+  border: 1px solid #E5E7EB;
+  border-radius: 4px;
+  text-align: center;
+  background: #fff;
+}
+
+
+/* Toolbar layout (parent) */
+.pp-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* gap BETWEEN BUTTONS inside each group, if they’re direct children; keep or tweak */
+  padding-top: 2px;
+  justify-content: flex-start;
+  /* <— keep groups on the left; no big stretch */
+}
+
+.pp-toolbar .tool-group+.tool-group {
+  margin-left: 12px;
+  /* <— control inter-group spacing here (try 8–16px) */
+}
+
+/* Each group is a flex row so its buttons align nicely */
+.pp-toolbar .tool-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* space between buttons in the same group */
+}
+
+.pp-btn-group {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.inline-color-picker {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+}
+
+/* Separator alignment */
+.db-prop-separator {
+  height: 1px;
+  background: #E5E7EB;
+  margin: 8px 0;
+}
+
+
+/* --- Dimensions: horizontal label + input alignment --- */
+.pp-dim-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  /* match compact spacing from your reference */
+  margin-top: 6px;
+}
+
+.pp-dim-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 40px;
+  /* last cell for the lock icon */
+  gap: 8px;
+}
+
+.pp-dim-row-single {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+/* inline field: label | input horizontally parallel */
+.pp-inline-field {
+  display: flex;
+  align-items: center;
+  /* <-- centers label vertically to textbox */
+  gap: 8px;
+  min-height: 36px;
+  /* matches EJ2 input height */
+}
+
+.pp-inline-label {
+  width: 18px;
+  /* compact; keeps label close to field */
+  text-align: left;
+  font-size: 12px;
+  color: #8C8C8C;
+  line-height: 1;
+  user-select: none;
+  flex: 0 0 18px;
+}
+
+.pp-inline-button{
+  margin-top: 4px;
+  margin-left: 4px;
+}
+
+/* Icon button cell sizing */
+.pp-icon-only.e-btn {
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==== Compact rows to match reference image ==== */
+.pp-compact-row {
+  margin-top: 6px;
+}
+
+.pp-compact-row .pp-field {
+  gap: 0;
+}
+
+/* remove vertical gap inside cells */
+.pp-subheader+.pp-grid {
+  margin-top: 6px;
+}
+
+/* When Gradient = ON: Type (1fr) | Color (44px) | Direction (1fr) */
+.pp-grid-3a {
+  grid-template-columns: 1fr 44px 1fr;
+}
+
+/* When Gradient = OFF or for Border Type: first col grows, color is fixed */
+.pp-grid-2-fixed {
+  grid-template-columns: 1fr 44px;
+}
+
+
+
+/* Two equal columns (X|Y, W|H, R|empty) */
+.pp-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Align label + textbox horizontally */
+.pp-inline-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* space between label and textbox */
+  min-height: 36px;
+  /* match Syncfusion input height */
+}
+
+/* Label style (X, Y, W, H, R) */
+.pp-inline-label {
+  width: 18px;
+  /* consistent narrow width */
+  font-size: 12px;
+  color: #666;
+  user-select: none;
+}
+
+/* Ensure input grows to full available width */
+.pp-inline-field .e-control,
+.pp-inline-field .e-input,
+.pp-inline-field .e-numeric {
+  flex: 1;
+  min-width: 0;
+}
+
+.collab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Utilities moved from inline styles */
+.pp-header-wrapper {
+  border-bottom: 1px solid #e0e0e0;
+  min-height: 30px;
+  padding-bottom: 6px;
+}
+
+.pp-title {
+  font-size: 14px;
+  margin: 0;
+}
+
+.mt-8 {
+  margin-top: 8px;
+}
+
+.mt-6 {
+  margin-top: 6px;
+}
+
+.pl-10 {
+  padding-left: 10px;
+}
+
+.pl-50 {
+  padding-left: 50px;
+}
+
+.pb-15 {
+  padding-bottom: 15px;
+}
+
+.pp-insert-btn {
+  text-transform: none;
+  color: #0b66ff;
+  border-color: #0b66ff;
+  border-radius: 4px;
+}
+
+.pp-btn-bold {
+  font-weight: bold;
+  min-width: 32px;
+}
+
+.pp-btn-italic {
+  font-style: italic;
+  min-width: 32px;
+}
+
+.pp-btn-underline {
+  text-decoration: underline;
+  min-width: 32px;
+}
+
+/* Toolbar banner classes */
+.banner-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #046ae5;
+  color: #ffffff;
+  padding: 8px 16px;
+  height: 35px;
+  border-bottom: 1px solid #005a9e;
+}
+
+.banner-left {
+  display: flex;
+  align-items: center;
+}
+
+.banner-title {
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.banner-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.guest-counter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.guest-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.guest-count {
+  font-size: 13px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.branding {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.brand-icon {
+  font-size: 12px;
+}
+
+.powered-by {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+}
+
+.brand-name {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.primary-toolbar-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 1 1;
+}
+
+/* Symbol palette internal layout */
+.symbol-palette-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+  border-right: 1px solid #e0e0e0;
+}
+
+.more-shapes-btn {
+  height: 40px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.more-shapes-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.more-shapes-content {
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.more-shapes-icon {
+  font-size: 14px;
+}
+
+.shapes-dialog-inner {
+  display: flex;
+  height: calc(100% - 60px);
+  padding: 0;
+}
+
+.shapes-dialog-left {
+  width: 180px;
+  border-right: 1px solid #e0e0e0;
+  /* reduce left padding so the listbox aligns closer to the dialog edge */
+  padding: 8px 8px 8px 4px;
+  background-color: #ffffff;
+  overflow-y: auto;
+}
+
+.shapes-dialog-right {
+  flex: 1;
+  padding: 0;
+  background-color: #ffffff;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure the Syncfusion ListView inside the Shapes dialog is aligned flush
+   Remove default UL left padding/margin so checkboxes sit near the dialog edge */
+#moreShapesDialog .e-listview,
+.shapes-dialog-left .e-listview {
+  padding: 0;
+}
+
+#moreShapesDialog .e-list-parent,
+.shapes-dialog-left .e-list-parent {
+  padding-left: 6px;
+  margin: 0;
+  list-style: none;
+}
+
+#moreShapesDialog .e-listview .e-list-item,
+.shapes-dialog-left .e-listview .e-list-item {
+  padding-left: 6px;
+  /* small inset so checkbox and text don't touch edge */
+}
+
+.shape-preview-image {
+  max-width: 100%;
+  object-fit: contain;
+  padding: 16px;
+  display: block;
+}
+
+.shape-preview-placeholder {
+  text-align: center;
+  color: #999;
+  padding: 40px;
+}
+
+/* Spinner overlay */
+.spinner-overlay {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.spinner-loader {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: calc(50% - 40px);
+  left: calc(50% - 40px);
+  border-radius: 50%;
+  padding: 2px;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.powered-by {
+  padding-left: 3px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+}
+
+.bannerText {
+  text-decoration: none;
+  color: #fff30f;
+  font-size: 14px;
+}
+
+/* Prevent global link hover styles from affecting the banner link */
+.bannerText,
+.bannerText:visited,
+.bannerText:active,
+.bannerText:hover {
+  color: #fff30f;
+  text-decoration: none;
+}
